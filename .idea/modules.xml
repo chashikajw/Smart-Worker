@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SmartWorker.iml" filepath="$PROJECT_DIR$/SmartWorker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Smart-Worker.iml" filepath="$PROJECT_DIR$/Smart-Worker.iml" />
+      <module fileurl="file://F:\Projects\Smart-Worker\SmartWorker.iml" filepath="F:\Projects\Smart-Worker\SmartWorker.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

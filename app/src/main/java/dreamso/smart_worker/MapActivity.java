@@ -20,6 +20,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -57,12 +58,9 @@ import java.util.Map;
 import dreamso.smart_worker.models.PlaceInfo;
 
 
-/**
- * Created by User on 10/2/2017.
- */
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback,
-        GoogleApiClient.OnConnectionFailedListener{
+        GoogleApiClient.OnConnectionFailedListener,GoogleMap.OnMarkerClickListener {
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
@@ -100,10 +98,19 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private static final LatLngBounds LAT_LNG_BOUNDS = new LatLngBounds(
             new LatLng(-40, -168), new LatLng(71, 136));
 
+    //markers
+    private static final LatLng PERTH = new LatLng(6.8631, 79.901);
+    private static final LatLng SYDNEY = new LatLng(6.8631, 79.890);
+    private static final LatLng BRISBANE = new LatLng(7.030, 80.001);
+
+    private Marker mPerth;
+    private Marker mSydney;
+    private Marker mBrisbane;
+
 
     //widgets
     private AutoCompleteTextView mSearchText;
-    private ImageView mGps, mInfo, mPlacePicker;
+    private ImageView mGps, mInfo;
 
 
     //vars
@@ -122,10 +129,16 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mSearchText = (AutoCompleteTextView) findViewById(R.id.input_search);
         mGps = (ImageView) findViewById(R.id.ic_gps);
         mInfo = (ImageView) findViewById(R.id.place_info);
-        mPlacePicker = (ImageView) findViewById(R.id.place_picker);
+
 
         getLocationPermission();
 
+        Button btnMap = (Button) findViewById(R.id.btnRequest);
+
+    }
+
+    public void Reqstbtn(){
+        Toast.makeText(this, "buton clicked", Toast.LENGTH_SHORT).show();
     }
 
     private void init(){
@@ -166,6 +179,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             public void onClick(View view) {
                 Log.d(TAG, "onClick: clicked gps icon");
                 getDeviceLocation();
+                loadMarkers();
             }
         });
 
@@ -186,23 +200,44 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             }
         });
 
-        mPlacePicker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
-
-                try {
-                    startActivityForResult(builder.build(MapActivity.this), PLACE_PICKER_REQUEST);
-                } catch (GooglePlayServicesRepairableException e) {
-                    Log.e(TAG, "onClick: GooglePlayServicesRepairableException: " + e.getMessage() );
-                } catch (GooglePlayServicesNotAvailableException e) {
-                    Log.e(TAG, "onClick: GooglePlayServicesNotAvailableException: " + e.getMessage() );
-                }
-            }
-        });
+        loadMarkers();
 
         hideSoftKeyboard();
+    }
+
+    public void loadMarkers(){
+
+        mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(MapActivity.this));
+
+        String snippet = "Address: " + "adpppp" + "\n" +
+                "Phone Number: " +"adpppp" + "\n" +
+                "Website: " + "adpppp" + "\n" +
+                "Price Rating: " + "adpppp" + "\n";
+
+        // Add some markers to the map, and add a data object to each marker.
+
+        MarkerOptions options = new MarkerOptions()
+                .position(PERTH)
+                .title("Perth")
+                .snippet(snippet);
+        mPerth = mMap.addMarker(options);
+        mPerth.setTag(0);
+
+
+
+
+
+
+        hideSoftKeyboard();
+
+
+
+
+
+
+
+
+
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -434,6 +469,31 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             places.release();
         }
     };
+
+    /** Called when the user clicks a marker. */
+    @Override
+    public boolean onMarkerClick(final Marker marker) {
+
+        // Retrieve the data from the marker.
+        Integer clickCount = (Integer) marker.getTag();
+        mSydney.showInfoWindow();
+        mPerth.showInfoWindow();
+
+        // Check if a click count was set, then display the click count.
+        if (clickCount != null) {
+            clickCount = clickCount + 1;
+            marker.setTag(clickCount);
+            Toast.makeText(this,
+                    marker.getTitle() +
+                            " has been clicked " + clickCount + " times.",
+                    Toast.LENGTH_SHORT).show();
+        }
+
+        // Return false to indicate that we have not consumed the event and that we wish
+        // for the default behavior to occur (which is for the camera to move such that the
+        // marker is centered and for the marker's info window to open, if it has one).
+        return false;
+    }
 }
 
 

@@ -43,6 +43,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
@@ -219,7 +220,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         MarkerOptions options = new MarkerOptions()
                 .position(PERTH)
                 .title("Perth")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker))
                 .snippet(snippet);
+        // Changing marker icon
+
         mPerth = mMap.addMarker(options);
         mPerth.setTag(0);
 

@@ -12,15 +12,15 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
-public class MainActivity extends AppCompatActivity {
+public class ServiceActivity extends AppCompatActivity {
 
-    public static final String TAG = "MainActivity";
+    public static final String TAG = "ServiceActivity";
     public static final int ERROR_DIALOG_REQUEST = 9001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_service);
 
         if(isServicesOK()){
             init();
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
        btnMap.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Intent intent = new Intent(MainActivity.this, MapActivity.class);
+               Intent intent = new Intent(ServiceActivity.this, MapActivity.class);
                startActivity(intent);
 
            }
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean isServicesOK(){
         Log.d(TAG,"isServiceOK: checking google services version");
 
-        int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(MainActivity.this);
+        int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(ServiceActivity.this);
 
         if(available== ConnectionResult.SUCCESS){
             //everything ia fine
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         else if(GoogleApiAvailability.getInstance().isUserResolvableError(available)){
             //error occurd but we can resolve it
             Log.d(TAG,"isServiceOK: an error occured but we can fix it");
-            Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(MainActivity.this,available,ERROR_DIALOG_REQUEST);
+            Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(ServiceActivity.this,available,ERROR_DIALOG_REQUEST);
             dialog.show();
         }else{
             Toast.makeText(this, "you can't make map request", Toast.LENGTH_SHORT).show();

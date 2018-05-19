@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="dreamso.smart_worker.MainActivity">
+    tools:context="dreamso.smart_worker.ServiceActivity">
     
     <Button
         android:layout_width="wrap_content"

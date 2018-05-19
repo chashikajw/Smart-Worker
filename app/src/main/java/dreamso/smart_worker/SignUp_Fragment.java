@@ -21,7 +21,7 @@ import android.widget.Toast;
 
 public class SignUp_Fragment extends Fragment implements OnClickListener {
 	private static View view;
-	private static EditText fullName, emailId, mobileNumber, location,
+	private static EditText fullName, emailId, mobileNumber, nic,
 			password, confirmPassword;
 	private static TextView login;
 	private static Button signUpButton;
@@ -45,7 +45,7 @@ public class SignUp_Fragment extends Fragment implements OnClickListener {
 		fullName = (EditText) view.findViewById(R.id.fullName);
 		emailId = (EditText) view.findViewById(R.id.userEmailId);
 		mobileNumber = (EditText) view.findViewById(R.id.mobileNumber);
-		location = (EditText) view.findViewById(R.id.location);
+		nic = (EditText) view.findViewById(R.id.nicNumber);
 		password = (EditText) view.findViewById(R.id.password);
 		confirmPassword = (EditText) view.findViewById(R.id.confirmPassword);
 		signUpButton = (Button) view.findViewById(R.id.signUpBtn);
@@ -95,7 +95,7 @@ public class SignUp_Fragment extends Fragment implements OnClickListener {
 		String getFullName = fullName.getText().toString();
 		String getEmailId = emailId.getText().toString();
 		String getMobileNumber = mobileNumber.getText().toString();
-		String getLocation = location.getText().toString();
+		String getnic = nic.getText().toString();
 		String getPassword = password.getText().toString();
 		String getConfirmPassword = confirmPassword.getText().toString();
 
@@ -107,7 +107,7 @@ public class SignUp_Fragment extends Fragment implements OnClickListener {
 		if (getFullName.equals("") || getFullName.length() == 0
 				|| getEmailId.equals("") || getEmailId.length() == 0
 				|| getMobileNumber.equals("") || getMobileNumber.length() == 0
-				|| getLocation.equals("") || getLocation.length() == 0
+				|| getnic.equals("") || getnic.length() == 0
 				|| getPassword.equals("") || getPassword.length() == 0
 				|| getConfirmPassword.equals("")
 				|| getConfirmPassword.length() == 0)

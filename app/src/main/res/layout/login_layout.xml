@@ -95,7 +95,7 @@
             android:background="@drawable/loginbutton_selector"
             android:padding="3dp"
             android:text="@string/login"
-            android:textColor="#009688"
+            android:textColor="#0d7b85"
             android:textSize="17sp"
             android:textStyle="bold" />
     </LinearLayout>

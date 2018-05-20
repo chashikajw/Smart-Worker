@@ -26,5 +26,12 @@
     <string name="add_job">Add Jobs</string>
     <string name="myProfile">My Profile</string>
     <string name="todo">TODO</string>
+    <string name="category">Category</string>
+    <string name="address">Address</string>
+    <string name="title">Job Title</string>
+    <string name="description">Description</string>
+    <string name="submitlocation">Submit Location</string>
+    <string name="setlocation">Set Location</string>
+    <string name="addjob">Add Job</string>
 
 </resources>

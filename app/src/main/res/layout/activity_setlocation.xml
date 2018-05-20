@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/background_color"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/map"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/setlocation"
+        android:textColor="@color/white_greyish"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:id="@+id/textView3" />
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="360dp"
+        android:layout_height="360dp"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        tools:context=".MapsActivity" />
+
+    <RelativeLayout
+        android:id="@+id/relLayout1"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@+id/dragg_result"
+        android:layout_alignTop="@+id/map"
+        android:background="@drawable/white_border"
+        android:elevation="10dp">
+
+        <ImageView
+            android:id="@+id/ic_magnify"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/ic_magnify" />
+
+        <AutoCompleteTextView
+            android:id="@+id/input_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/map"
+            android:layout_marginTop="25dp"
+            android:background="@null"
+            android:hint="Enter Address, City or Zip Code"
+            android:imeOptions="actionSearch"
+            android:textColor="#000"
+            android:textSize="15sp" />
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/ic_gps"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignEnd="@+id/relLayout1"
+        android:layout_below="@+id/relLayout1"
+        android:layout_marginEnd="14dp"
+        android:layout_marginTop="24dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_gps" />
+
+    <TextView
+        android:id="@+id/dragg_result"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/map"
+        android:layout_centerHorizontal="true"
+        android:text="location address"
+        android:textColor="@color/white_greyish" />
+
+    <Button
+        android:id="@+id/submitbtn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dragg_result"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/loginbutton_selector"
+        android:onClick="submitlocation"
+        android:padding="3dp"
+        android:text="@string/submitlocation"
+        android:textColor="#0d7b85"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>
+
+
+
+
+
+
+

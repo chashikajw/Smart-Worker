@@ -5,10 +5,12 @@ import java.util.regex.Pattern;
 
 import dreamso.smart_worker.R;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.XmlResourceParser;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.text.InputType;
@@ -29,6 +31,13 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class Login_Fragment extends Fragment implements OnClickListener {
 	private static View view;
 
@@ -40,6 +49,13 @@ public class Login_Fragment extends Fragment implements OnClickListener {
 	private static Animation shakeAnimation;
 	private static FragmentManager fragmentManager;
 
+	//defining firebase object
+	private FirebaseAuth mAuth;
+
+
+
+	private ProgressDialog mProgress;
+
 	public Login_Fragment() {
 
 	}
@@ -50,6 +66,23 @@ public class Login_Fragment extends Fragment implements OnClickListener {
 		view = inflater.inflate(R.layout.login_layout, container, false);
 		initViews();
 		setListeners();
+
+		// Initializing Firebase object
+		mAuth = FirebaseAuth.getInstance();
+
+		//if user already logged in start profile activity here
+		if (mAuth.getCurrentUser() != null) {
+			//start profile activity  here
+			getActivity().finish();
+			startActivity(new Intent(getActivity(), ServiceActivity.class));
+
+		}
+
+
+		mProgress = new ProgressDialog(getActivity());
+
+
+
 		return view;
 	}
 
@@ -130,7 +163,7 @@ public class Login_Fragment extends Fragment implements OnClickListener {
 		case R.id.loginBtn:
 			//checkValidation();
 
-			startActivity(new Intent(getActivity(), ServiceActivity.class));
+			//startActivity(new Intent(getActivity(), ServiceActivity.class));
 
 
 			break;
@@ -159,7 +192,10 @@ public class Login_Fragment extends Fragment implements OnClickListener {
 	}
 
 	// Check Validation before login
-	private void checkValidation() {
+	private boolean checkValidation() {
+
+		boolean flag =true;
+
 		// Get email id and password
 		String getEmailId = emailid.getText().toString();
 		String getPassword = password.getText().toString();
@@ -172,19 +208,61 @@ public class Login_Fragment extends Fragment implements OnClickListener {
 		// Check for both field is empty or not
 		if (getEmailId.equals("") || getEmailId.length() == 0
 				|| getPassword.equals("") || getPassword.length() == 0) {
+			flag = false;
 			loginLayout.startAnimation(shakeAnimation);
 			new CustomToast().Show_Toast(getActivity(), view,
 					"Enter both credentials.");
 
 		}
 		// Check if email id is valid or not
-		else if (!m.find())
+		else if (!m.find()){
+			flag = false;
 			new CustomToast().Show_Toast(getActivity(), view,
-					"Your Email Id is Invalid.");
+					"Your Email Id is Invalid.");}
 		// Else do login and do your stuff
 		else
 			Toast.makeText(getActivity(), "Do Login.", Toast.LENGTH_SHORT)
 					.show();
 
+		return flag;
+
+	}
+
+	public void loginUser(){
+
+		// Get email id and password
+		String getEmailId = emailid.getText().toString();
+		String getPassword = password.getText().toString();
+
+		if(checkValidation()){
+
+			//if field validations are ok progress dialog will be shown
+			mProgress.setMessage("Login...");
+			mProgress.show();
+
+			mAuth.signInWithEmailAndPassword(getEmailId,getPassword)
+					.addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+						@Override
+						public void onComplete(@NonNull Task<AuthResult> task) {
+							mProgress.dismiss();
+							if(task.isSuccessful())
+							{
+								//start main activity
+								getActivity().finish();
+								startActivity(new Intent(getActivity(),ServiceActivity.class));
+
+							}
+							if(!task.isSuccessful()){
+
+								Toast.makeText(getActivity(), "Login Problem! Please retry.",Toast.LENGTH_LONG).show();
+							}
+
+
+						}
+					});
+		}else {
+			new CustomToast().Show_Toast(getActivity(), view,
+					"login error.");
+		}
 	}
 }

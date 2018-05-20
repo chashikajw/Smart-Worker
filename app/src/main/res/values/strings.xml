@@ -22,5 +22,9 @@
     <string name="registered_emailid">Please enter your Registered Email Id below:</string>
     <string name="submit">SUBMIT</string>
     <string name="back">BACK</string>
+    <string name="view_jobs">View Jobs</string>
+    <string name="add_job">Add Jobs</string>
+    <string name="myProfile">My Profile</string>
+    <string name="todo">TODO</string>
 
 </resources>

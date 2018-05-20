@@ -178,7 +178,7 @@ public class SignUp_Fragment extends Fragment implements OnClickListener {
 
 		// Else do signup or do your stuff
 		else{
-			Toast.makeText(getActivity(), "Do SignUp.", Toast.LENGTH_SHORT)
+			Toast.makeText(getActivity(), "Signing up....", Toast.LENGTH_SHORT)
 					.show();}
 
 		return flag;

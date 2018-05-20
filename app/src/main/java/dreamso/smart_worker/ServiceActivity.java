@@ -31,6 +31,16 @@ public class ServiceActivity extends AppCompatActivity {
 
     private void init(){
         Button btnMap = (Button) findViewById(R.id.btnMap);
+        Button btnaddjob = (Button) findViewById(R.id.AddJobs);
+
+        btnaddjob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ServiceActivity.this, AddServiceActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
        btnMap.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -40,6 +50,8 @@ public class ServiceActivity extends AppCompatActivity {
 
            }
        });
+
+
     }
 
     public boolean isServicesOK(){

@@ -162,6 +162,7 @@ public class Login_Fragment extends Fragment implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.loginBtn:
 			//checkValidation();
+			loginUser();
 
 			//startActivity(new Intent(getActivity(), ServiceActivity.class));
 

@@ -29,6 +29,7 @@
         <activity android:name=".ServiceActivity" />
         <activity android:name=".AddServiceActivity" />
         <activity android:name=".SetLocationActivity" />
+        <activity android:name=".ServiceListActivity" />
     </application>
 
 </manifest>

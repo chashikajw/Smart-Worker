@@ -60,7 +60,7 @@ public class AddServiceActivity extends AppCompatActivity {
                 mobileNumberSt = mobileNumber.getText().toString();
                 descriptionSt = description.getText().toString();
                 addressSt = address.getText().toString();
-                
+
                 Intent intent = new Intent(getBaseContext(), SetLocationActivity.class);
                 intent.putExtra("category", categorySt);
                 intent.putExtra("title", titleSt);

@@ -206,7 +206,7 @@ public class SetLocationActivity extends AppCompatActivity implements OnMapReady
 
     public void submitlocation(View v){
 
-        Intent intent = new Intent(getBaseContext(), SetLocationActivity.class);
+        Intent intent = new Intent(getBaseContext(), ServiceActivity.class);
         intent.putExtra("category", category);
         intent.putExtra("title", title);
         intent.putExtra("mobileNumber", mobile);
@@ -215,27 +215,31 @@ public class SetLocationActivity extends AppCompatActivity implements OnMapReady
         intent.putExtra("lattitude", lattitiude);
         intent.putExtra("longtitude", longtitiude);
 
-        mAuth = FirebaseAuth.getInstance();
-        String userId = mAuth.getCurrentUser().getUid();
+        try{
+            mAuth = FirebaseAuth.getInstance();
+            String userId = mAuth.getCurrentUser().getUid();
 
-        DatabaseReference user;
-        //String owner = user.child("Users").child(userId).child("name").getvalue();
+            DatabaseReference user;
+            //String owner = user.child("Users").child(userId).child("name").getvalue();
 
-        final Service service = new Service(userId,category,title,description,mobile,address,lattitiude,longtitiude);
-
-
+            final Service service = new Service(userId,category,title,description,mobile,address,lattitiude,longtitiude);
 
 
-        final String serviceId = Integer.toString((int) System.currentTimeMillis());
 
-        DatabaseReference job = serviceRef.child(serviceId);
-        job.child("category").setValue(service.getCategory());
-        job.child("jobtitle").setValue(service.getJobtitle());
-        job.child("description").setValue(service.getDescription());
-        job.child("mobile").setValue(service.getMobile());
-        job.child("address").setValue(service.getAddress());
-        job.child("lattitude").setValue(service.getLattitude());
-        job.child("longtitude").setValue(service.getLongtitude());
+
+            final String serviceId = Integer.toString((int) System.currentTimeMillis());
+
+            DatabaseReference job = serviceRef.child(serviceId);
+            job.child("category").setValue(service.getCategory());
+            job.child("jobtitle").setValue(service.getJobtitle());
+            job.child("description").setValue(service.getDescription());
+            job.child("mobile").setValue(service.getMobile());
+            job.child("address").setValue(service.getAddress());
+            job.child("lattitude").setValue(service.getLattitude());
+            job.child("longtitude").setValue(service.getLongtitude());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
 
         startActivity(intent);
@@ -346,9 +350,14 @@ public class SetLocationActivity extends AppCompatActivity implements OnMapReady
                             Log.d(TAG, "onComplete: found location!");
                             Location currentLocation = (Location) task.getResult();
 
-                            moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
-                                    DEFAULT_ZOOM,
-                                    "My Location");
+                            try{
+                                moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
+                                        DEFAULT_ZOOM,
+                                        "My Location");
+                            }catch (NullPointerException e){
+                                e.printStackTrace();
+                            }
+
 
                         }else{
                             Log.d(TAG, "onComplete: current location is null");

@@ -50,6 +50,11 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -57,11 +62,13 @@ import java.util.List;
 import java.util.Map;
 
 import dreamso.smart_worker.models.PlaceInfo;
-
+import dreamso.smart_worker.models.Service;
 
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback,
         GoogleApiClient.OnConnectionFailedListener,GoogleMap.OnMarkerClickListener {
+
+    private DatabaseReference mDatabase;
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
@@ -122,6 +129,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private GoogleApiClient mGoogleApiClient;
     private PlaceInfo mPlace;
     private Marker mMarker;
+    public double latitudem ,longitudem;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -131,10 +139,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mGps = (ImageView) findViewById(R.id.ic_gps);
         mInfo = (ImageView) findViewById(R.id.place_info);
 
+        // Instance of firebase database
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Service");
+
 
         getLocationPermission();
 
-        Button btnMap = (Button) findViewById(R.id.btnRequest);
 
     }
 
@@ -210,7 +220,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(MapActivity.this));
 
-        String snippet = "Address: " + "adpppp" + "\n" +
+        /*String snippet = "Address: " + "adpppp" + "\n" +
                 "Phone Number: " +"adpppp" + "\n" +
                 "Website: " + "adpppp" + "\n" +
                 "Price Rating: " + "adpppp" + "\n";
@@ -225,10 +235,73 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         // Changing marker icon
 
         mPerth = mMap.addMarker(options);
-        mPerth.setTag(0);
+        mPerth.setTag(0); */
+
+        try{
+            //create child event listener to listen to the database
+            mDatabase.addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    //if the child added
+                    Service service = dataSnapshot.getValue(Service.class);
+
+
+                    try{
+                        latitudem = Double.parseDouble(service.getLattitude());
+                        longitudem = Double.parseDouble(service.getLongtitude());
+
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    Marker mPlace;
+                    LatLng place = new LatLng(latitudem, longitudem);
+
+                    String snippet = "Description: " + service.getDescription() + "\n" +
+                            "Phone Number: " +service.getMobile() + "\n" +
+                            "Address: " + service.getAddress() + "\n" +
+                            "owner: " + "Chashika" + "\n";
+
+                    MarkerOptions options = new MarkerOptions()
+                            .position(place)
+                            .title(service.getJobtitle())
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker))
+                            .snippet(snippet);
+                    // Changing marker icon
+
+                    mPlace = mMap.addMarker(options);
+                    mPlace.setTag(0);
+
+                }
+
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    //Set the message to read failure
+                    System.out.println("The read failed: " + databaseError.getCode());
+                }
+            });
 
 
 
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
 
 

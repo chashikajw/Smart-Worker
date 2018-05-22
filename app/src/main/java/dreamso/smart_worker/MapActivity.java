@@ -13,6 +13,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -141,6 +142,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         // Instance of firebase database
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Service");
+        Toolbar mtoolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mtoolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
         getLocationPermission();
@@ -176,11 +181,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                         || actionId == EditorInfo.IME_ACTION_DONE
                         || keyEvent.getAction() == KeyEvent.ACTION_DOWN
                         || keyEvent.getAction() == KeyEvent.KEYCODE_ENTER){
-
+                    loadMarkers();
                     //execute our method for searching
                     geoLocate();
-                }
 
+                }
+                loadMarkers();
                 return false;
             }
         });
@@ -256,21 +262,27 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                     }
                     Marker mPlace;
                     LatLng place = new LatLng(latitudem, longitudem);
-
-                    String snippet = "Description: " + service.getDescription() + "\n" +
-                            "Phone Number: " +service.getMobile() + "\n" +
+                    String snippet = "Category: " + service.getCategory() + "\n" +
+                            "Phone Number: " +service.getDescription() + "\n" +
                             "Address: " + service.getAddress() + "\n" +
+                            "Description: " + service.getMobile() + "\n" +
                             "owner: " + "Chashika" + "\n";
-
+                    String catgryC = service.getCategory();
+                    String defCat = "Shoping";
                     MarkerOptions options = new MarkerOptions()
                             .position(place)
                             .title(service.getJobtitle())
                             .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker))
                             .snippet(snippet);
-                    // Changing marker icon
 
                     mPlace = mMap.addMarker(options);
                     mPlace.setTag(0);
+
+
+
+                    // Changing marker icon
+
+
 
                 }
 
@@ -345,11 +357,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         if(list.size() > 0){
             Address address = list.get(0);
 
+
             Log.d(TAG, "geoLocate: found a location: " + address.toString());
             //Toast.makeText(this, address.toString(), Toast.LENGTH_SHORT).show();
-
+            loadMarkers();
             moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), DEFAULT_ZOOM,
                     address.getAddressLine(0));
+            loadMarkers();
         }
     }
 
@@ -425,6 +439,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                     .position(latLng)
                     .title(title);
             mMap.addMarker(options);
+            loadMarkers();
         }
 
         hideSoftKeyboard();

@@ -16,24 +16,31 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDr8Mm-3qlW4iwmBgITaejjLwysa7YPP1U" />
+            android:value="@string/google_maps_API_key" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MapActivity" />
-        <activity android:name=".ServiceActivity" />
-        <activity android:name=".AddServiceActivity" />
-        <activity android:name=".SetLocationActivity" />
-        <activity android:name=".ServiceListActivity" />
-        <activity
-            android:name=".Main2Activity"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme"></activity>
+        <activity android:name=".MapActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".ServiceActivity"/>
+        <activity android:name=".ServiceActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".AddServiceActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".ServiceActivity"/>/>
+        <activity android:name=".SetLocationActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".AddServiceActivity"/>/>
+        <activity android:name=".ServiceListActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".MainActivity">
+            android:screenOrientation="portrait"
+        </activity>
     </application>
 
 </manifest>

@@ -16,8 +16,8 @@ Domestic services android app with a map. Users can search and get information a
 
 ### How to setup? 
  
- - clone the project
- - import it to the Android studio
+ - Clone the project
+ - Import it to the Android studio
  - Build the project
  - You have to get your Gogle map API key and repalxe it to @string/google_map_api key string attribute.because my key can be not working for you
  - Developed Android studio version is 3.0.1, if you are using Android studio 2.  you have to change the some of dependancies in the gradle file according to your version.
@@ -27,7 +27,7 @@ Domestic services android app with a map. Users can search and get information a
 
 ### if you are a new user, you have to register
 
-you can simply register the app submiting require details 
+You can simply register the app submiting require details 
 
 
 <img src="https://github.com/chashikajw/smart-worker-images/blob/master/signup.png" alt="Network Enable" width="320" height="550"><br/>
@@ -42,7 +42,7 @@ You have to give email and password
 
 ### Require permissions
 
-when you login to app you have to enable GPS and internet
+When you login to app you have to enable GPS and internet
 
 <img src="https://github.com/chashikajw/smart-worker-images/blob/master/permissions.png" alt="Network Enable" width="320" height="550"><br/>
 
@@ -64,9 +64,9 @@ This is the service map. you can find the all locations of availble services and
 
 - GPS icon -> re locate to your location
 - Info icon -> view details of serched loaction
-- marker clicking -> view all details of the service 
+- Marker clicking -> view all details of the service 
 
-when you click the marker it apprears the direction button in right bottom, clicking that button you can direct to google maps to find the direction to the location from your location 
+When you click the marker it apprears the direction button in right bottom, clicking that button you can direct to google maps to find the direction to the location from your location 
 
 
 <p><img src="https://github.com/chashikajw/smart-worker-images/blob/master/map.png" alt="Network Enable" width="320" height="550">
@@ -79,7 +79,7 @@ when you click the marker it apprears the direction button in right bottom, clic
 
 ### Add Services.
 
-filling this details you can add a service to the map. also you can set any location to the service
+Filling this details you can add a service to the map. also you can set any location to the service
 
 
 <p><img src="https://github.com/chashikajw/smart-worker-images/blob/master/addservice.png" alt="Network Enable" width="320" height="550">

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
     <EditText
         android:id="@+id/search_field"
@@ -21,6 +22,18 @@ android:orientation="vertical">
         android:paddingTop="10dp"
         android:textColor="#999999"
         android:textSize="16sp" />
+
+
+    <ImageButton
+        android:id="@+id/search_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/search_field"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/search_field"
+        android:layout_marginRight="30dp"
+        android:background="@android:color/background_light"
+        app:srcCompat="@mipmap/search_button" />
 
 <android.support.v7.widget.RecyclerView
     android:id="@+id/result_list"

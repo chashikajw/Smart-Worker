@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background_color"
     android:layout_height="match_parent">
 
@@ -83,8 +84,9 @@
         android:id="@+id/submitbtn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/dragg_result"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/loginbutton_selector"
         android:onClick="submitlocation"
         android:padding="3dp"
@@ -92,6 +94,28 @@
         android:textColor="#0d7b85"
         android:textSize="17sp"
         android:textStyle="bold" />
+
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:id="@+id/appBarLayout">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        <View
+            android:id="@+id/toolbar_shadow"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@drawable/toolbar_dropshadow" />
+    </android.support.design.widget.AppBarLayout>
+
 
 
 </RelativeLayout>

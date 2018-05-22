@@ -30,6 +30,10 @@
         <activity android:name=".AddServiceActivity" />
         <activity android:name=".SetLocationActivity" />
         <activity android:name=".ServiceListActivity" />
+        <activity
+            android:name=".Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

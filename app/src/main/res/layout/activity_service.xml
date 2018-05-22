@@ -12,28 +12,13 @@
         android:id="@+id/btnMap"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_above="@+id/myProfile"
-        android:layout_alignStart="@+id/myProfile"
-        android:layout_marginBottom="21dp"
-        android:background="@drawable/loginbutton_selector"
-        android:onClick="loadMap"
-        android:padding="3dp"
-        android:text="@string/view_jobs"
-        android:textColor="#0d7b85"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        tools:ignore="OnClick" />
-
-    <Button
-        android:id="@+id/myProfile"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
         android:layout_above="@+id/AddJobs"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginBottom="23dp"
+        android:layout_marginEnd="29dp"
         android:background="@drawable/loginbutton_selector"
         android:padding="3dp"
-        android:text="@string/myProfile"
+        android:text="@string/view_map"
         android:textColor="#0d7b85"
         android:textSize="17sp"
         android:textStyle="bold" />
@@ -43,8 +28,8 @@
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/myProfile"
-        android:layout_marginBottom="41dp"
+        android:layout_alignStart="@+id/btnMap"
+        android:layout_marginBottom="44dp"
         android:background="@drawable/loginbutton_selector"
         android:padding="3dp"
         android:text="@string/add_job"
@@ -56,9 +41,9 @@
         android:id="@+id/jobviewbtn"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_above="@+id/btnMap"
+        android:layout_below="@+id/appBarLayout"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="35dp"
+        android:layout_marginTop="52dp"
         android:clickable="true"
         android:contentDescription="@string/todo"
         android:src="@drawable/title_logo"
@@ -68,7 +53,8 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:id="@+id/appBarLayout">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"

@@ -33,12 +33,20 @@
             android:textSize="14sp" />
 
         <Button
+            android:id="@+id/btnRequest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Request"
-            android:id="@+id/btnRequest"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+
+            android:background="@drawable/loginbutton_selector"
             android:onClick="Reqstbtn"
-            />
+
+            android:text="Request"
+            android:textColor="@color/background_color"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+        />
     </LinearLayout>
 
 

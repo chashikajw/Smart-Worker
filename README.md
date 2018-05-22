@@ -9,7 +9,7 @@ chashikajw007@gmail.com | Chashika Weerathunga | chashikajw | IA11
 Domestic services android app with a map. Users can search and get information about nearest domestic services and anyone can request to serve. People also can add services via the app.
 - Require GPS location. 
 - Require internet connection.
-- Require person etails to register the app
+- Require person details to register the app
 
 ### Installation
 [Downlaod apk](https://github.com/codezilla2018/Smart-Worker/tree/master/Demo%20apk)</br>
@@ -25,7 +25,7 @@ Domestic services android app with a map. Users can search and get information a
 
 ## Application guide
 
-### if you are a new user, you have to register
+### If you are a new user, you have to register
 
 You can simply register the app submiting require details 
 

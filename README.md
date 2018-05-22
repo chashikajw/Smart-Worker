@@ -11,7 +11,7 @@ Domestic services android app with a map. Users can search and get information a
 - Require internet connection.
 - Require person etails to register the app
 
-### installation
+### Installation
 [Downlaod apk](https://github.com/codezilla2018/Smart-Worker/tree/master/Demo%20apk)</br>
 
 ### How to setup? 

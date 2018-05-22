@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background_color"
     tools:context="dreamso.smart_worker.AddServiceActivity">
 
@@ -11,7 +12,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/view"
+        android:layout_below="@+id/appBarLayout"
         android:gravity="center"
         android:padding="10dp"
         android:text="@string/addjob"
@@ -73,9 +74,9 @@
         android:id="@+id/title"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/description"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/category"
-        android:layout_marginTop="28dp"
+        android:layout_marginBottom="18dp"
         android:background="@android:color/transparent"
         android:drawableLeft="@drawable/user"
         android:drawablePadding="8dp"
@@ -97,9 +98,9 @@
         android:id="@+id/description"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/mobileNumber"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/title"
-        android:layout_marginTop="25dp"
+        android:layout_marginBottom="17dp"
         android:background="@android:color/transparent"
         android:drawableLeft="@drawable/user"
         android:drawablePadding="8dp"
@@ -122,25 +123,6 @@
         android:layout_height="1px"
         android:background="@color/white_greyish" />
 
-    <EditText
-        android:id="@+id/category"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView"
-        android:layout_marginTop="25dp"
-        android:background="@android:color/transparent"
-        android:drawableLeft="@drawable/confirm_password"
-        android:drawablePadding="8dp"
-        android:gravity="center_vertical"
-        android:hint="@string/category"
-        android:inputType="textCapWords"
-        android:padding="10dp"
-        android:singleLine="true"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="16sp" />
-
     <Button
         android:id="@+id/setlocationBtn"
         android:layout_width="300dp"
@@ -154,6 +136,36 @@
         android:textColor="@color/background_color"
         android:textSize="17sp"
         android:textStyle="bold" />
+
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:id="@+id/appBarLayout">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        <View
+            android:id="@+id/toolbar_shadow"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@drawable/toolbar_dropshadow" />
+    </android.support.design.widget.AppBarLayout>
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_alignStart="@+id/setlocationBtn"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="39dp"
+        android:textColor="@color/white" />
 
 
 </RelativeLayout>

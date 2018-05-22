@@ -13,6 +13,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -75,6 +76,8 @@ public class SetLocationActivity extends AppCompatActivity implements OnMapReady
     private FirebaseAuth mAuth;
     private DataSnapshot dataSnapshot;
 
+    Marker[] markelst = new Marker[1];
+
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
@@ -122,6 +125,13 @@ public class SetLocationActivity extends AppCompatActivity implements OnMapReady
                             longtitiude = Double.toString(latLng.longitude);
 
                             resutText.setText(locality + "  " + country);
+                            MarkerOptions options = new MarkerOptions()
+                                    .position(latLng)
+                                    .title("se location")
+                                    .draggable(true);
+                            markelst[0] = mMap.addMarker(options);
+                            mMarker = markelst[0];
+
                         }
                     }
 
@@ -182,6 +192,13 @@ public class SetLocationActivity extends AppCompatActivity implements OnMapReady
         setContentView(R.layout.activity_setlocation);
         mSearchText = (AutoCompleteTextView) findViewById(R.id.input_search);
         mGps = (ImageView) findViewById(R.id.ic_gps);
+
+        Toolbar mtoolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mtoolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+
 
 
         category = getIntent().getStringExtra("category");

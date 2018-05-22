@@ -220,10 +220,7 @@ public class Login_Fragment extends Fragment implements OnClickListener {
 			flag = false;
 			new CustomToast().Show_Toast(getActivity(), view,
 					"Your Email Id is Invalid.");}
-		// Else do login and do your stuff
-		else
-			Toast.makeText(getActivity(), "Do Login.", Toast.LENGTH_SHORT)
-					.show();
+
 
 		return flag;
 

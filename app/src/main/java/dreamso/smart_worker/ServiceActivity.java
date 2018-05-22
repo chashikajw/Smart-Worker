@@ -82,6 +82,7 @@ public class ServiceActivity extends AppCompatActivity {
         if(item.getItemId()== R.id.action_logout){
             FirebaseAuth fAuth = FirebaseAuth.getInstance();
             fAuth.signOut();
+            finish();
 
             startActivity(new Intent(this,MainActivity.class));
         }

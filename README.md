@@ -6,9 +6,9 @@ chashikajw007@gmail.com | Chashika Weerathunga | chashikajw | IA11
 # Work smart - Earn smart
 
 Domestic services android app with a map. Users can search and get information about nearest domestic services and anyone can request to serve. People also can add services via the app.
-- requre GPS location. 
-- require internet connection.
-- require person etails to register the app
+- Require GPS location. 
+- Require internet connection.
+- Require person etails to register the app
 
 ## Application guide
 
@@ -56,11 +56,12 @@ This is the service map. you can find the all locations of availble services and
 when you click the marker it apprears the direction button in right bottom, clicking that button you can direct to google maps to find the direction to the location from your location 
 
 
-<img src="https://github.com/chashikajw/smart-worker-images/blob/master/map.png" alt="Network Enable" width="320" height="550">
+<p><img src="https://github.com/chashikajw/smart-worker-images/blob/master/map.png" alt="Network Enable" width="320" height="550">
 
 <img src="https://github.com/chashikajw/smart-worker-images/blob/master/mapdetails.png" alt="Network Enable" width="320" height="550">
 
 <img src="https://github.com/chashikajw/smart-worker-images/blob/master/direction.png" alt="Network Enable" width="320" height="550"><br>
+</p>
 
 
 ### Add Services.
@@ -68,11 +69,12 @@ when you click the marker it apprears the direction button in right bottom, clic
 filling this details you can add a service to the map. also you can set any location to the service
 
 
-<img src="https://github.com/chashikajw/smart-worker-images/blob/master/addservice.png" alt="Network Enable" width="320" height="550">
+<p><img src="https://github.com/chashikajw/smart-worker-images/blob/master/addservice.png" alt="Network Enable" width="320" height="550">
 
 
-<img src="https://github.com/chashikajw/smart-worker-images/blob/master/submitlocation.png" alt="Network Enable" width="320" height="550"><br>
-
+<img src="https://github.com/chashikajw/smart-worker-images/blob/master/submitlocation.png" alt="Network Enable" width="320" height="550">
+<br>
+</p>
 
 
 **Used APIs**</br>

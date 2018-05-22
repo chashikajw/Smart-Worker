@@ -3,12 +3,21 @@
 chashikajw007@gmail.com | Chashika Weerathunga | chashikajw | IA11
 
 ![launcher icon](https://github.com/chashikajw/smart-worker-images/blob/master/logo.png)
-# Work smart - Earn smart
+# Work Smart - Earn Smart
 
 Domestic services android app with a map. Users can search and get information about nearest domestic services and anyone can request to serve. People also can add services via the app.
 - Require GPS location. 
 - Require internet connection.
 - Require person etails to register the app
+
+### How to setup? 
+ 
+ - clone the project
+ - import it to the Android studio
+ - Build the project
+ - You have to get your Gogle map API key and repalxe it to @string/google_map_api key string attribute.because my key can be not working for you
+ - Developed Android studio version is 3.0.1, if you are using Android studio 2.  you have to change the some of dependancies in the gradle file according to your version.
+ 
 
 ## Application guide
 
@@ -83,5 +92,6 @@ filling this details you can add a service to the map. also you can set any loca
 [Firebase Database](https://firebase.google.com/docs/database/)</br>
 [Firebase Authentication](https://firebase.google.com/docs/auth/)</br>
 
-
+**Licence**</br>
+[MIT licence](https://github.com/codezilla2018/Smart-Worker/blob/master/LICENSE)
 
